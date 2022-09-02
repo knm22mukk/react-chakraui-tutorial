@@ -1,11 +1,14 @@
-import { Button, ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './router/Router';
 import theme from './theme/theme';
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Button colorScheme='teal'>ボタン</Button>
-      <h2>色の確認</h2>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     </ChakraProvider>
   );
 }
