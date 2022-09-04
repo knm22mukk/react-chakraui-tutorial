@@ -1,9 +1,10 @@
 import { FC } from 'react';
+import { HeaderLayout } from '../template/HeaderLayout';
 
 export const Home: FC = () => {
   return (
-    <div>
+    <HeaderLayout>
       <h1>ホームです</h1>
-    </div>
+    </HeaderLayout>
   );
 };
