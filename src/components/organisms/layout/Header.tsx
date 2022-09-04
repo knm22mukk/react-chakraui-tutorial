@@ -1,18 +1,7 @@
-import { HamburgerIcon } from '@chakra-ui/icons';
-import {
-  Box,
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  Flex,
-  Heading,
-  IconButton,
-  Link,
-  useDisclosure,
-} from '@chakra-ui/react';
+import { Box, Flex, Heading, Link, useDisclosure } from '@chakra-ui/react';
 import { FC } from 'react';
+import { MenuIconButton } from '../../atoms/button/MenuIconButton';
+import { MenuDrawer } from '../../molecules/MenuDrawer';
 
 export const Header: FC = () => {
   const { onClose, isOpen, onOpen } = useDisclosure();
@@ -39,26 +28,9 @@ export const Header: FC = () => {
             <Link>設定</Link>
           </Box>
         </Flex>
-        <IconButton
-          aria-label='menu button'
-          icon={<HamburgerIcon />}
-          size='md'
-          variant='unstyled'
-          display={{ base: 'block', md: 'none' }}
-          onClick={onOpen}
-        />
+        <MenuIconButton onOpen={onOpen} />
       </Flex>
-      <Drawer placement='left' size='xs' onClose={onClose} isOpen={isOpen}>
-        <DrawerOverlay>
-          <DrawerContent>
-            <DrawerBody p={0} bg='gray.100'>
-              <Button w='100%'>TOP</Button>
-              <Button w='100%'>ユーザー</Button>
-              <Button w='100%'>設定</Button>
-            </DrawerBody>
-          </DrawerContent>
-        </DrawerOverlay>
-      </Drawer>
+      <MenuDrawer onClose={onClose} isOpen={isOpen} />
     </>
   );
 };
