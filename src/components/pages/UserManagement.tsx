@@ -1,6 +1,7 @@
 import { Center, Spinner, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react';
 import { FC, useCallback, useEffect } from 'react';
 import { useAllUsers } from '../../hooks/useAllUsers';
+import { useLoginUser } from '../../hooks/useLoginUser';
 import { useSelectUsers } from '../../hooks/useSelectUsers';
 import { UserCard } from '../organisms/layout/user/UserCard';
 import { UserDetailModal } from '../organisms/layout/user/UserDetailModal';
@@ -10,6 +11,8 @@ export const UserManagement: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { getUsers, users, loading } = useAllUsers();
   const { onSelectUser, selectedUser } = useSelectUsers();
+  const { loginUser } = useLoginUser();
+  console.log(loginUser);
 
   useEffect(() => getUsers(), []);
 
