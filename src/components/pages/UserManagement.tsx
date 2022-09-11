@@ -12,9 +12,8 @@ export const UserManagement: FC = () => {
   const { getUsers, users, loading } = useAllUsers();
   const { onSelectUser, selectedUser } = useSelectUsers();
   const { loginUser } = useLoginUser();
-  console.log(loginUser);
 
-  useEffect(() => getUsers(), []);
+  useEffect(() => getUsers(), [getUsers]);
 
   const onClickUser = useCallback(
     (id: number) => {
@@ -44,7 +43,12 @@ export const UserManagement: FC = () => {
           ))}
         </Wrap>
       )}
-      <UserDetailModal user={selectedUser} isOpen={isOpen} onClose={onClose} />
+      <UserDetailModal
+        user={selectedUser}
+        isOpen={isOpen}
+        onClose={onClose}
+        isAdmin={loginUser?.isAdmin}
+      />
     </HeaderLayout>
   );
 };
