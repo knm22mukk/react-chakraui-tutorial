@@ -11,14 +11,16 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { FC } from 'react';
+import { User } from '../../../../types/api/User';
 
 type Props = {
+  user?: User | null;
   isOpen: boolean;
   onClose: () => void;
 };
 
 export const UserDetailModal: FC<Props> = (props) => {
-  const { isOpen, onClose } = props;
+  const { user, isOpen, onClose } = props;
   return (
     <Modal isOpen={isOpen} onClose={onClose} autoFocus={false} motionPreset='slideInBottom'>
       <ModalOverlay />
@@ -29,19 +31,19 @@ export const UserDetailModal: FC<Props> = (props) => {
           <Stack spacing={4}>
             <FormControl>
               <FormLabel>名前</FormLabel>
-              <Input value='jak' isReadOnly />
+              <Input value={user?.username} isReadOnly />
             </FormControl>
             <FormControl>
               <FormLabel>フルネーム</FormLabel>
-              <Input value='jak' isReadOnly />
+              <Input value={user?.name} isReadOnly />
             </FormControl>
             <FormControl>
               <FormLabel>メールアドレス</FormLabel>
-              <Input value='jak' isReadOnly />
+              <Input value={user?.email} isReadOnly />
             </FormControl>
             <FormControl>
               <FormLabel>電話番号</FormLabel>
-              <Input value='jak' isReadOnly />
+              <Input value={user?.phone} isReadOnly />
             </FormControl>
           </Stack>
         </ModalBody>
